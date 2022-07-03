@@ -1,0 +1,20 @@
+---
+- name: Update apt
+  apt:
+    update_cache: yes
+
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Configure Nginx
+  ansible.builtin.template:
+    src: index.nginx-debian.html.j2
+    dest: /var/www/html/index.nginx-debian.html
+    mode: 644
+
+- name: Restart Nginx service
+  ansible.builtin.service:
+    name: nginx
+    state: restarted

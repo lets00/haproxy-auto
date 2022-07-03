@@ -4,3 +4,9 @@
   become: true
   roles:
     - haproxy-env
+
+- hosts: webservers
+  user: ubuntu
+  become: true
+  roles:
+    - nginx-env
