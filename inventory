@@ -1,0 +1,9 @@
+[load-balancers]
+192.168.100.100 primary=true priority=101
+192.168.100.101 priority=100
+192.168.100.102 priority=99
+
+[webservers]
+192.168.100.11
+192.168.100.12
+192.168.100.13

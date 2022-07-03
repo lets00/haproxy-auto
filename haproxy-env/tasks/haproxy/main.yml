@@ -1,0 +1,26 @@
+---
+- name: Update apt
+  apt:
+    update_cache: yes
+    
+- name: Install HAproxy
+  apt:
+    name: haproxy
+    state: present
+    
+- name: Enabling HAproxy start at boot.
+  ansible.builtin.copy:
+    src: haproxy/haproxy
+    dest: /etc/default/haproxy
+    mode: 644
+
+- name: Configure haproxy.cfg
+  ansible.builtin.template:
+    src: haproxy/haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    mode: 644
+
+- name: Restart HAproxy service
+  ansible.builtin.service:
+    name: haproxy
+    state: restarted

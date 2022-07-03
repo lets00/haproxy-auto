@@ -1,0 +1,7 @@
+---
+# tasks file for haproxy-env
+- name: HAProxy
+  import_tasks: haproxy/main.yml
+
+- name: Keepalived
+  import_tasks: keepalived/main.yml

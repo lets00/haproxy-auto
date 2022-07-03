@@ -1,0 +1,6 @@
+---
+- hosts: load-balancers
+  user: ubuntu
+  become: true
+  roles:
+    - haproxy-env

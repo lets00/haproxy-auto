@@ -1,0 +1,17 @@
+---
+# vars file for haproxy-env
+
+# Keepalived vars
+keepalive_interface: eth0
+virtual_ip: 10.0.3.254
+master_priority: priority
+virtual_router_id: 51
+#generate cmd: openssl rand -base64 10
+auth_pass: dUEadMBQFT1OMA==
+
+# haproxy vars
+frontend_name: www
+backend_name: nginx_pool
+balance: roundrobin
+mode: tcp
+options: tcplog
