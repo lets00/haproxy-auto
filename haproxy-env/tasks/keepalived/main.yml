@@ -4,6 +4,11 @@
     name: keepalived
     state: present
 
+- name: Install psmisc
+  apt:
+    name: psmisc
+    state: present
+
 - name: Configure keepalived.conf
   ansible.builtin.template:
     src: keepalived/keepalived.conf.j2

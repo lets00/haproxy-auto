@@ -1,19 +1,19 @@
 vrrp_script chk_haproxy {
-    script “killall -0 haproxy”
-    interval 2
-    weight 2
+    script "/usr/bin/killall -0 haproxy"
+    interval 1
+    weight 3
 }
 
 # Configuation for the virtual interface
 vrrp_instance VI_1 {
     interface {{ keepalive_interface }}
     state {{ (primary | default(false)) | ternary('MASTER', 'BACKUP', 'BACKUP') }}
-    priority {{ priority }}        # set this to 100 on the other machine
+    priority {{ priority }}
     virtual_router_id {{ virtual_router_id }}
     smtp_alert          # Activate email notifications
     authentication {
-        auth_type AH
-        auth_pass {{ auth_pass }}      # Set this to some secret phrase
+        auth_type PASS
+        auth_pass {{ auth_pass }}
     }
     # The virtual ip address shared between the two loadbalancers
     virtual_ipaddress {

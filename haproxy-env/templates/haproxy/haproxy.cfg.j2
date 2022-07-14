@@ -35,7 +35,7 @@ defaults
 
 
 frontend {{ frontend_name | default('www') }}
-        bind {{ virtual_ip }}:80
+        bind *:80
         default_backend nginx_pool
 
 backend {{ backend_name | default('nginx_pool') }}
